@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton } from "@material-ui/core";
-import { useEditor } from "@craftjs/core";
+import { useEditor } from "../../packages/core/src";
 
 export const Topbar = () => {
 

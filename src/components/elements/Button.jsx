@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button as MaterialButton, Divider } from "@material-ui/core";
-import { useNode, useEditor, Frame } from "@craftjs/core";
+import { useNode, useEditor, Frame } from "../../../packages/core/src";
 import { Text } from "./Text";
 import { TextSettings } from "./Text";
 
@@ -20,7 +20,7 @@ export const Button = ({ size, variant, color, children }) => {
   //   console.log(nodes)
   // }, [nodes])
 
-  const renderHtml = () => {
+  const renderHtml = async () => {
 
     // const freshNode = {
     //   data: {
@@ -83,26 +83,24 @@ export const Button = ({ size, variant, color, children }) => {
       'span': { type: 'span', name: 'span', displayName: 'span' },
     }
 
-    // const testNode = query.parseFreshNode(freshNode).toNode();
-
 
     const nodeList = query.parseReactElement(
-      <div>
-        <h1 class="hello">Hello</h1>
-        <h1 class="hello">hi</h1>
-        <div style={{background: "green"}}>
-          <h1 class="hello">A <span> B </span> C </h1>
-          <h1 class="hello">123</h1>
-        </div>
-        <h1 class="hello">bye</h1>
-      </div>
+      <h1>
+        A
+        <span>BD</span>
+        C
+      </h1>
     ).toNodeTree();
 
-    console.log(nodeList)
+    
+    // debugger;
+    // console.log(nodeList)
     const keys = Object.keys(nodeList.nodes)
+    // console.log(nodeList)
     actions.addNodeTree(nodeList, 'ROOT');
 
-    let parent = null
+    // debugger;
+    // let parent = null
 
     // for (let d of keys) {
     //   const node = nodeList.nodes[d]
@@ -111,7 +109,7 @@ export const Button = ({ size, variant, color, children }) => {
 
     //   const { type, name, displayName } = userComponents[node.data.type]
 
-    //   // if(chil)
+    // //   // if(chil)
 
     //   const freshNode = {
     //     data: {

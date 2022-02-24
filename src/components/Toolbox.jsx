@@ -1,7 +1,7 @@
 // components/Toolbox.js
 import React from "react";
 import { Box, Typography, Grid, Button as MaterialButton } from "@material-ui/core";
-import { Element, useEditor } from "@craftjs/core";
+import { Element, useEditor } from "../../packages/core/src";
 import { Container } from "./elements/Container";
 import { Card } from "./elements/Card";
 import { Button } from "./elements/Button";

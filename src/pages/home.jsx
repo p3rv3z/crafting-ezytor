@@ -9,7 +9,7 @@ import { Container } from '../components/elements/Container';
 import { Button } from '../components/elements/Button';
 import { Card, CardTop, CardBottom } from '../components/elements/Card';
 import { Text } from '../components/elements/Text';
-import { Editor, Frame, Element } from "@craftjs/core";
+import { Editor, Frame, Element } from "../../packages/core/src";
 
 
 export default function Home() {
