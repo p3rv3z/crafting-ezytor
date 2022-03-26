@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from "react";
 
-import { SimpleElement } from './SimpleElement';
+import { SimpleElement } from "./SimpleElement";
 
-import { NodeId } from '../interfaces';
-import { NodeElement } from '../nodes/NodeElement';
-import { useInternalNode } from '../nodes/useInternalNode';
+import { NodeId } from "../interfaces";
+import { NodeElement } from "../nodes/NodeElement";
+import { useInternalNode } from "../nodes/useInternalNode";
 
 export const DefaultRender = () => {
   const { type, props, nodes, hydrationTimestamp } = useInternalNode(
@@ -19,8 +19,8 @@ export const DefaultRender = () => {
   return useMemo(() => {
     let children = props.children;
 
-    console.log(children);
-    
+    // console.log(children);
+
     if (nodes && nodes.length > 0) {
       children = (
         <React.Fragment>
@@ -33,7 +33,7 @@ export const DefaultRender = () => {
 
     const render = React.createElement(type, props, children);
 
-    if (typeof type == 'string') {
+    if (typeof type == "string") {
       return <SimpleElement render={render} />;
     }
 

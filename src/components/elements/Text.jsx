@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useNode } from "../../../packages/core/src";
-import {Slider, FormControl, FormLabel} from "@material-ui/core";
-import ContentEditable from 'react-contenteditable'
+import { Slider, FormControl, FormLabel } from "@material-ui/core";
+import ContentEditable from "react-contenteditable";
 
-
-export const Text = ({text, fontSize, textAlign, children}) => {
-  const { connectors: {connect, drag}, selected, dragged,actions: {setProp} } = useNode((state) => ({
+export const Text = ({ text, fontSize, textAlign, children }) => {
+  const {
+    connectors: { connect, drag },
+    selected,
+    dragged,
+    actions: { setProp },
+  } = useNode((state) => ({
     selected: state.events.selected,
-    dragged: state.events.dragged
+    dragged: state.events.dragged,
   }));
 
   const [editable, setEditable] = useState(false);
 
-  useEffect(() => {!selected && setEditable(false)}, [selected]);
+  useEffect(() => {
+    !selected && setEditable(false);
+  }, [selected]);
 
   return (
-     <div 
-      ref={ref => connect(drag(ref))}
-      onClick={e => setEditable(true)}
-    >
-      {children}
+    <div ref={(ref) => connect(drag(ref))} onClick={(e) => setEditable(true)}>
+      {text}
+      {/* {children} */}
       {/* <ContentEditable
         disabled={!editable}
         html={text} 
@@ -31,14 +35,16 @@ export const Text = ({text, fontSize, textAlign, children}) => {
         tagName="p"
         style={{fontSize: `${fontSize}px`, textAlign}}
       /> */}
-      
     </div>
-  )
-}
+  );
+};
 
 export const TextSettings = () => {
-  const { actions: {setProp}, fontSize } = useNode((node) => ({
-    fontSize: node.data.props.fontSize
+  const {
+    actions: { setProp },
+    fontSize,
+  } = useNode((node) => ({
+    fontSize: node.data.props.fontSize,
   }));
 
   return (
@@ -52,20 +58,20 @@ export const TextSettings = () => {
           min={1}
           max={50}
           onChange={(_, value) => {
-            setProp(props => props.fontSize = value);
+            setProp((props) => (props.fontSize = value));
           }}
         />
       </FormControl>
     </>
-  )
-}
+  );
+};
 
 Text.craft = {
   props: {
     text: "Hi",
-    fontSize: 20
+    fontSize: 20,
   },
   related: {
-    settings: TextSettings
-  }  
-}
+    settings: TextSettings,
+  },
+};
